@@ -1,0 +1,296 @@
+:root {
+  --bg-color: #FAF6F0;
+  --card-bg: #FFFFFF;
+  --primary-text: #2C3531;
+  --secondary-text: #606C5A;
+  --accent-sage: #8E9E86;
+  --accent-sage-light: #DFE5DC;
+  --border-color: #E6E1DA;
+  --shadow-color: rgba(44, 53, 49, 0.04);
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --border-radius-card: 16px;
+  --border-radius-sm: 8px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--primary-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-sage-light);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-sage);
+}
+
+/* Custom visual components */
+.scandi-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-card);
+  box-shadow: 0 10px 30px var(--shadow-color);
+  padding: 24px;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+}
+
+.scandi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 40px rgba(44, 53, 49, 0.07);
+}
+
+.scandi-btn {
+  background-color: var(--primary-text);
+  color: var(--bg-color);
+  border: none;
+  border-radius: 30px;
+  padding: 10px 24px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.scandi-btn:hover {
+  background-color: var(--accent-sage);
+}
+
+.scandi-btn:active {
+  transform: scale(0.98);
+}
+
+.scandi-btn-secondary {
+  background-color: transparent;
+  color: var(--primary-text);
+  border: 1px solid var(--primary-text);
+  border-radius: 30px;
+  padding: 9px 23px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.scandi-btn-secondary:hover {
+  background-color: rgba(44, 53, 49, 0.05);
+  border-color: var(--accent-sage);
+  color: var(--accent-sage);
+}
+
+.scandi-input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-color);
+  color: var(--primary-text);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.scandi-input:focus {
+  border-color: var(--accent-sage);
+}
+
+/* Scandinavian Travelogue typography */
+h1, h2, h3, .serif-font {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* Leaflet Map overrides to match the warm scandi aesthetic */
+.leaflet-container {
+  font-family: var(--font-sans);
+  border-radius: var(--border-radius-card);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px var(--shadow-color);
+}
+
+/* Grayscale/Warm sepia filter for map tiles to blend into Scandinavian palette */
+.scandi-map-tiles {
+  filter: sepia(0.2) hue-rotate(5deg) contrast(0.9) saturate(0.85);
+}
+
+/* Custom marker styling */
+.scandi-map-marker {
+  background-color: var(--primary-text);
+  border: 2px solid var(--bg-color);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bg-color);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Live presence cursors */
+.live-cursor {
+  position: absolute;
+  pointer-events: none;
+  z-index: 9999;
+  transition: all 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.live-cursor-label {
+  background-color: var(--primary-text);
+  color: var(--bg-color);
+  font-size: 10px;
+  font-family: var(--font-sans);
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  margin-top: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+/* Drag and Drop styles */
+.drag-over {
+  border: 2px dashed var(--accent-sage) !important;
+  background-color: var(--accent-sage-light) !important;
+}
+
+/* Navigation tabs */
+.scandi-tab-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--bg-color);
+  padding: 4px;
+  border-radius: 30px;
+  border: 1px solid var(--border-color);
+}
+
+.scandi-tab-btn {
+  background-color: transparent;
+  color: var(--secondary-text);
+  border: none;
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.scandi-tab-btn:hover {
+  color: var(--primary-text);
+  background-color: rgba(44, 53, 49, 0.04);
+}
+
+.scandi-tab-btn.active {
+  background-color: var(--card-bg);
+  color: var(--primary-text);
+  font-weight: 600;
+  box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+/* Modal Overlay & Card Styling */
+.scandi-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(44, 53, 49, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 24px;
+}
+
+.scandi-modal-content {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-card);
+  box-shadow: 0 20px 50px rgba(44, 53, 49, 0.15);
+  padding: 32px;
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: scandiModalFade 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes scandiModalFade {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Footer rules */
+.jordan-katz-footer {
+  border-top: 1px solid var(--border-color);
+  padding: 24px 0;
+  margin-top: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--secondary-text);
+}
+
+.jordan-katz-footer a {
+  color: var(--secondary-text);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.jordan-katz-footer a:hover {
+  color: var(--accent-sage);
+}
+
+
