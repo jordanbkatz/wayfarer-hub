@@ -45,10 +45,16 @@ A collaborative, multi-stop travel planner designed in a premium Scandinavian Tr
    ```bash
    # In terminal 1: Run the Firebase Emulator Suite
    npm run emulators
-   
+   ```bash
    # In terminal 2: Run the Vite Development Server
    npm run dev
    ```
+
+## Build & Deployment
+
+- **Build Script**: `npm run build`
+- **Output Directory**: `dist`
+- **Cloudflare Routing**: Configured via `public/_redirects` for Single Page Application routing (`/* /index.html 200`).
 
 ## Security Rules Summary
 
